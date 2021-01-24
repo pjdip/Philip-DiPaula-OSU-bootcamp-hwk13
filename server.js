@@ -1,15 +1,15 @@
 // Dependencies
-const express = require("express");
 
 //HandleBars Things
 const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Express Things
+const express = require("express");
 let PORT = process.env.PORT || 8080;
 let app = express();
 
-//Express Things
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static("public"));
 
