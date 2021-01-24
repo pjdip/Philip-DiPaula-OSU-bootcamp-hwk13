@@ -6,5 +6,6 @@ let burger = {
             callback(result);
         });
     },
-    
+
+/*     insertOne:  */
 }
