@@ -11,7 +11,14 @@ const orm = {
     },
 
     insertOne: (table, cols, vals, callback) => {
-        
+        let queryString = "INSERT INTO ?? SET ?";
+        let sqlData = {
+            burger_name: vals
+        };
+        connection.query(queryString, [table, sqlData], (err, result) => {
+            if (err) { throw err }
+            callback(result);
+        });
     },
 
     updateOne: (table, )
