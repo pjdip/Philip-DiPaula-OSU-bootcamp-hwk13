@@ -20,4 +20,20 @@ $(() => {
         });
     });
 
+    $(".eat-burger").on("click", () => {
+        let id = $(this).data("id");
+        let newEatenState = {
+            devoured: true
+        }
+
+        // Send PUT request
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT", 
+            data: newEatenState
+        }).then(() => {
+            console.log("Burger Devoured!");
+            location.reload();
+        });
+    });
+
 });
