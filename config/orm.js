@@ -1,4 +1,5 @@
 /* const { query } = require("./connection"); */
+const { query, connect } = require("./connection");
 const connection = require("./connection");
 
 // Helper Functions
@@ -31,33 +32,35 @@ const orm = {
     selectAll: (table, callback) => {
         let queryString = "SELECT * FROM " + table;
         connection.query(queryString, (err, result) => {
-            if (err) {
-                console.error(err);
-            }
+            if (err) {console.error(err)}
             callback(result);
         });
     },
 
     insertOne: (table, cols, vals, callback) => {
         let queryString = "INSERT INTO " + table;
-        queryString += " (";
-        queryString += cols.toString();
-        queryString += ") VALUES (";
-        queryString += qMarkString(vals.length);
-        queryString += ")";
+        queryString += " (" + cols.toString() + ") ";
+        queryString += "VALUES (" + qMarkString(vals.length) + ")";
 
         console.log(queryString);
         console.log(vals);
 
         connection.query(queryString, vals, (err, result) => {
-            if (err) {
-                console.error(err);
-            }
+            if (err) {console.error(err)}
             callback(result);
         });
     },
 
-    updateOne: (table)
+    updateOne: (table, objColVals, condition, callback) => {
+        let queryString = "UPDATE " + table;
+        queryString += " SET " + objToString(objColVals);
+        queryString += " WHERE " + condition;
+
+        connection.query(queryString, (err, result) => {
+            if (err) {console.error(err)}
+            callback(result);
+        });
+    }
 };
 
 // Export the orm object for the model
