@@ -1,0 +1,21 @@
+<h1>Eat-Da-Burger</h1>
+
+<h2>On the Menu</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#unless devoured}}
+            {{> burgers/burger-block food=true}}
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>In My Tummy</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#if devoured}}
+            {{> burgers/burger-block food=false}}
+        {{/if}}
+    {{/each}}
+</ul>
