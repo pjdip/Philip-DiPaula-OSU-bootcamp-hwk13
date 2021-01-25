@@ -1,12 +1,30 @@
 /* const { query } = require("./connection"); */
 const connection = require("./connection");
 
+// Helper Functions
+
+// Creates a string of num ?'s to be inserted in mysql queries
 const qMarkString = num => {
     let marks = "";
     for (let i = 0; i < num; i++) {
         marks += "? ";
     }
     return marks.slice(0, -1);
+};
+
+// Takes an object of key/value pairs and converts to a string for mysql queries
+const objToString = object => {
+    let str = "";
+    for (let key in object) {
+        let value = object[key];
+
+        // In case there are spaces in the the string, wrap in ''
+        if (typeof value === "string" && value.indexOf(" ") != -1) {
+        value = "'" + value + "'";
+        }
+        str += key + "=" + value + ",";
+    }
+    return str.slice(0, -1);
 };
 
 const orm = {
@@ -39,7 +57,7 @@ const orm = {
         });
     },
 
-/*     updateOne: (table) */
+    updateOne: (table)
 };
 
 // Export the orm object for the model

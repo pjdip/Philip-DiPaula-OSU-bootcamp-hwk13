@@ -21,7 +21,8 @@ router.get("/", (req, res) => {
 
 // Adds burgers to the database
 router.post("/api/burgers", (req, res) => {
-    burger.insertOne(["burger_name"],
+    burger.insertOne(
+        ["burger_name"],
         [req.body.burger_name],
         result => {
             res.json({ id: result.insertId });
