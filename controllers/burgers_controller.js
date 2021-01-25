@@ -30,5 +30,23 @@ router.post("/api/burgers", (req, res) => {
     );
 });
 
+// Updates burgers when they have been consumed
+router.put("/api/burgers/:id", (req, res) => {
+    let condition = "id = " + req.params.id;
+    console.log(condition);
+
+    burger.updateOne(
+        { devoured: true },
+        condition,
+        result => {
+            if (result.changedRows === 0) {
+                return res.status(404).end();
+            } else {
+                res.status(200).end();
+            }
+        }
+    );
+});
+
 // Export the router
 module.exports = router;
