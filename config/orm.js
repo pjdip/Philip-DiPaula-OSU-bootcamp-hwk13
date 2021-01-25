@@ -1,5 +1,16 @@
-const { query } = require("./connection");
+/* const { query } = require("./connection"); */
 const connection = require("./connection");
+
+const qMarkString = num => {
+    let marks = "";
+    for (let i = 0; i < num; i++) {
+        marks += "? ";
+    }
+    marks.slice(0, -1);
+    return marks;
+};
+
+console.log(qMarkString(5));
 
 const orm = {
     selectAll: (table, callback) => {
@@ -11,11 +22,15 @@ const orm = {
     },
 
     insertOne: (table, cols, vals, callback) => {
-        let queryString = "INSERT INTO ?? SET ?";
-        let sqlData = {
-            burger_name: vals
-        };
-        connection.query(queryString, [table, sqlData], (err, result) => {
+        let queryString = "INSERT INTO " + table;
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += qMarkString(vals.length);
+        queryString += ")";
+
+        connection.query(queryString, vals, (err, result) => {
             if (err) { throw err }
             callback(result);
         });
