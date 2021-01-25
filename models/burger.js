@@ -2,7 +2,7 @@
 let orm = require("../config/orm");
 
 let burger = {
-    
+
     // Retrieving all burgers from the database
     selectAll: callback => {
         orm.selectAll("burgers", result => {
@@ -17,6 +17,15 @@ let burger = {
             callback(result);
         });
     },
+
+    // objColVals is an object whos keys represent columns in the mysql table
+    // and who's values are what are to be updated to those columns in the table
+    // condition is SQL text to go with a "WHERE" statement
+    updateOne: (objColVals, condition, callback) => {
+        orm.updateOne("burgers", objColVals, condition, result => {
+            callback(result);
+        });
+    }
 }
 
 // Export database functions for use in the controller
