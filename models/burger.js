@@ -9,3 +9,5 @@ let burger = {
 
 /*     insertOne:  */
 }
+
+module.exports = burger;
