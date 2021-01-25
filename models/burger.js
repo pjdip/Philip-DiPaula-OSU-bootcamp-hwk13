@@ -25,6 +25,12 @@ let burger = {
         orm.updateOne("burgers", objColVals, condition, result => {
             callback(result);
         });
+    }, 
+
+    deleteOne: (condition, callback) => {
+        orm.deleteOne("burgers", condition, result => {
+            callback(result);
+        });
     }
 }
 
