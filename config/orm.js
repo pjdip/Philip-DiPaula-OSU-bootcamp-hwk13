@@ -21,7 +21,7 @@ const orm = {
         });
     },
 
-    updateOne: (table, )
+/*     updateOne: (table) */
 };
 
 // Export the orm object for the model
