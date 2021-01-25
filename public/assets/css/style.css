@@ -16,18 +16,20 @@ h2 {
     margin-left: 10%;
 }
 
-/* #menu-list {
-    margin-left: auto;
-} */
+#menu-list {
+    margin-left: 0;
+    padding-left: 0;
+}
 
 #eaten {
     float: right;
     margin-right: 10%;
 }
 
-/* #eaten-list {
-    margin-right: auto;
-} */
+#eaten-list {
+    margin-left: 0;
+    padding-left: 0;
+}
 
 li {
     line-height: 1.5;
@@ -37,4 +39,14 @@ li {
 #burger-form {
     text-align: center;
     clear: both;
+}
+
+.eat-burger {
+    float: right;
+    margin-left: 10px;
+}
+
+.delete-burger {
+    float: right;
+    margin-left: 10px;
 }

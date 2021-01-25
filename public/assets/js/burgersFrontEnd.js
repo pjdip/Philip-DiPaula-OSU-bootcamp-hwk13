@@ -21,7 +21,7 @@ $(() => {
     });
 
     // Burger consumption button
-    $(".eat-burger").on("click", event => {
+    $(".eat-burger").on("click", function(event) {
         // this is referring to the window instead of the button for some reason >.<
         let id = $(this).data("id");
         console.log(id);
@@ -42,7 +42,7 @@ $(() => {
     });
 
     // Burger delete button
-    $(".delete-burger").on("click", event => {
+    $(".delete-burger").on("click", function(event) {
         let id = $(this).data("id");
         console.log(id);
 
