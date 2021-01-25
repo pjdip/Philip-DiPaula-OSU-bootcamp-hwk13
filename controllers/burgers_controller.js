@@ -19,5 +19,18 @@ router.get("/", (req, res) => {
     });
 });
 
+// Adds burgers to the database
+router.post("/api/burgers", (req, res) => {
+    burger.insertOne([
+        "burger_name"
+    ],
+    [
+        req.body.burga
+    ],
+    result => {
+        res.json({ id: result.insertId });
+    });
+});
+
 // Export the router
 module.exports = router;
