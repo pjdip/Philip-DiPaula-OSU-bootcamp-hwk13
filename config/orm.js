@@ -6,17 +6,16 @@ const qMarkString = num => {
     for (let i = 0; i < num; i++) {
         marks += "? ";
     }
-    marks.slice(0, -1);
-    return marks;
+    return marks.slice(0, -1);
 };
-
-console.log(qMarkString(5));
 
 const orm = {
     selectAll: (table, callback) => {
         let queryString = "SELECT * FROM " + table;
         connection.query(queryString, (err, result) => {
-            if (err) { throw err }
+            if (err) {
+                console.error(err);
+            }
             callback(result);
         });
     },
@@ -25,13 +24,17 @@ const orm = {
         let queryString = "INSERT INTO " + table;
         queryString += " (";
         queryString += cols.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
+        queryString += ") VALUES (";
         queryString += qMarkString(vals.length);
         queryString += ")";
 
+        console.log(queryString);
+        console.log(vals);
+
         connection.query(queryString, vals, (err, result) => {
-            if (err) { throw err }
+            if (err) {
+                console.error(err);
+            }
             callback(result);
         });
     },

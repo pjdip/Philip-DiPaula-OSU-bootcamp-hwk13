@@ -1,4 +1,4 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
+// Wait to attach handlers until the DOM is fully loaded
 $(() => {
   
     $(".create-form").on("submit", event => {
@@ -6,9 +6,11 @@ $(() => {
     
         let newBurger = {
             burger_name: $("#burga").val().trim(),
-        };
+        }
     
-        // Send the POST request.
+        console.log(newBurger);
+
+        // Send POST request
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
