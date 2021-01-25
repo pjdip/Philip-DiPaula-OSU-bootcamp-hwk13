@@ -2,9 +2,13 @@ h1 {
     text-align: center;
 }
 
-#burger-form {
+h2 {
     text-align: center;
-    clear: both;
+}
+
+#burger {
+    display: block;
+    margin: auto;
 }
 
 #menu {
@@ -12,7 +16,25 @@ h1 {
     margin-left: 10%;
 }
 
+/* #menu-list {
+    margin-left: auto;
+} */
+
 #eaten {
     float: right;
     margin-right: 10%;
+}
+
+/* #eaten-list {
+    margin-right: auto;
+} */
+
+li {
+    line-height: 1.5;
+    list-style-type: none;
+}
+
+#burger-form {
+    text-align: center;
+    clear: both;
 }

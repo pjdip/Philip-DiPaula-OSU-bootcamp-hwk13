@@ -1,9 +1,11 @@
 <h1>Eat-Da-Burger!</h1>
 
+<img id="burger" src="/assets/img/burger.png" alt="picture of a burger" width="200" height="150">
+
 <div id="menu">
     <h2>On the Menu</h2>
 
-    <ul>
+    <ul id="menu-list">
         {{#each burgers}}
             {{#unless devoured}}
                 {{> burgers/burger-block food=true}}
@@ -15,7 +17,7 @@
 <div id="eaten">
     <h2>In My Tummy</h2>
 
-    <ul>
+    <ul id="eaten-list">
         {{#each burgers}}
             {{#if devoured}}
                 {{> burgers/burger-block food=false}}

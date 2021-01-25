@@ -60,6 +60,15 @@ const orm = {
             if (err) {console.error(err)}
             callback(result);
         });
+    },
+
+    deleteOne: (table, condition, callback) => {
+        let queryString = "DELETE FROM " + table;
+        queryString += " WHERE " + condition;
+        connection.query(queryString, (err, result) => {
+            if (err) console.error(err);
+            callback(result);
+        });
     }
 };
 
