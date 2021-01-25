@@ -20,6 +20,7 @@ $(() => {
         });
     });
 
+    // Burger consumption button
     $(".eat-burger").on("click", event => {
         // this is referring to the window instead of the button for some reason >.<
         let id = $(this).data("id");
@@ -36,6 +37,20 @@ $(() => {
             data: newEatenState
         }).then(() => {
             console.log("Burger Devoured!");
+            location.reload();
+        });
+    });
+
+    // Burger delete button
+    $(".delete-burger").on("click", event => {
+        let id = $(this).data("id");
+        console.log(id);
+
+        // Send DELETE request
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE",
+        }).then(() => {
+            console.log("Burger " + id + " deleted!");
             location.reload();
         });
     });
