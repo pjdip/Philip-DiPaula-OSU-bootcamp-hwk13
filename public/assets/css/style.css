@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+}
+
+#burger-form {
+    text-align: center;
+    clear: both;
+}
+
+#menu {
+    float: left;
+    margin-left: 10%;
+}
+
+#eaten {
+    float: right;
+    margin-right: 10%;
+}

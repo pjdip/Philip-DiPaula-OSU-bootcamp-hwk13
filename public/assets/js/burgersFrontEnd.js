@@ -20,8 +20,12 @@ $(() => {
         });
     });
 
-    $(".eat-burger").on("click", () => {
+    $(".eat-burger").on("click", event => {
+        // this is referring to the window instead of the button for some reason >.<
         let id = $(this).data("id");
+        console.log(id);
+        console.log($(this));
+
         let newEatenState = {
             devoured: true
         }
